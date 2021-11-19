@@ -1,0 +1,26 @@
+{
+  "name": "soab",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./src/index.js",
+    "dev": "nodemon ./src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@discordjs/builders": "^0.8.2",
+    "@discordjs/rest": "^0.1.0-canary.0",
+    "ascii-table": "^0.0.9",
+    "axios": "^0.24.0",
+    "chalk": "^4.1.2",
+    "discord-api-types": "^0.24.0",
+    "discord.js": "^13.4.0-dev.1637237217.802a5ac",
+    "dotenv": "^10.0.0",
+    "glob": "^7.2.0",
+    "mongoose": "^6.0.13",
+    "reconlx": "^2.5.1"
+  }
+}
