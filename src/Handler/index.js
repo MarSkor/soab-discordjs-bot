@@ -44,9 +44,9 @@ module.exports = async (client) => {
     });
     client.on("ready", async () => {
         // Register for a single guild
-        // await client.guilds.cache
-        //     .get("910275943224991824")
-        //     .commands.set(arrayOfSlashCommands);
+        await client.guilds.cache
+            .get("910275943224991824")
+            .commands.set(arrayOfSlashCommands);
 
         // Register for all the guilds the bot is in
         await client.application.commands.set(arrayOfSlashCommands);
@@ -55,4 +55,5 @@ module.exports = async (client) => {
     // mongoose
     if (!process.env.MONGO_URI) return;
 
-    mongoose.connect(process.env.MONGO_URI).then(() => console.log(chalk.blue('Connected to mongodb'))
+    mongoose.connect(process.env.MONGO_URI).then(() => console.log(chalk.blue('Connected to mongodb')));
+}
