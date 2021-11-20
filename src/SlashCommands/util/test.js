@@ -36,8 +36,6 @@ module.exports = {
             interaction.followUp({ content: `Message sent to ${user.tag}`})
         } else{
             interaction.followUp({ content: messageToSend })
-        }
-        
-        
+        }  
     }
 }

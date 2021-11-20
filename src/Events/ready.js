@@ -2,10 +2,10 @@ const client = require("../index");
 const chalk = require('chalk');
 
 const statusArray = [
-    'apex',
-    'malding in apex',
-    'quitting apex',
-    'uninstalling apex',
+    'Apex Legends',
+    'malding in Apex Legends',
+    'quitting Apex Legends',
+    'uninstalling Apex Legends',
     'yeeting pc out the window'
 ]
 
