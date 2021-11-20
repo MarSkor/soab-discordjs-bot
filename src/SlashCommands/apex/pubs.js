@@ -2,6 +2,8 @@ const { SlashCommandBuilder } = require("@discordjs/builders");
 const axios = require('axios');
 const { MessageEmbed } = require("discord.js");
 const { getCountDown , timeFormater } = require("../../Helpers/adapters");
+const chalk = require('chalk');
+
 
 module.exports = {
     ...new SlashCommandBuilder()
@@ -34,11 +36,11 @@ module.exports = {
                 
             )
             .setImage(data.battle_royale.current.asset)
-            .setFooter("May the allfather be with you, and dont mald too much <3")
+            .setFooter("May the allfather be with you, and don't mald too much <3")
 
             interaction.followUp({ embeds: [embed] })
         } catch(error){
-            console.error( `Error: ${error}` );
+            console.error(chalk.red(`Error: ${error}`) );
             return await interaction
 				.followUp({
 					content: `There was an error processing your request\n\`${error}\``, ephemeral: true
