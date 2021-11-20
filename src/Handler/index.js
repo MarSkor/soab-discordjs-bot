@@ -1,3 +1,4 @@
+//handler from https://github.com/reconlx/djs-base-handler/blob/master/handler/index.js
 const { glob } = require("glob");
 const { promisify } = require("util");
 const { Client } = require("discord.js");
@@ -58,4 +59,3 @@ module.exports = async (client) => {
     mongoose.connect(process.env.MONGO_URI).then(() => console.log(chalk.blue('Connected to mongodb')));
 };
 
-//from https://github.com/reconlx/djs-base-handler/blob/master/handler/index.js
