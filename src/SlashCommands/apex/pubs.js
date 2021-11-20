@@ -24,7 +24,7 @@ module.exports = {
             
             const res = await axios.get(url)
             const data = res.data;
-            // console.log(data)
+            console.log(data)
             
             const embed = new MessageEmbed()
             .setTitle('Battle Royale | Pubs')
@@ -33,7 +33,8 @@ module.exports = {
                 {name: "Current Map", value: "```fix\n\n" + data.battle_royale.current.map + "```", inline: true},
                 {name: "Time Left",  value: "```xl\n\n" + getCountDown(data.battle_royale.current.remainingTimer) + "```", inline: true },
                 {name: "Next Map", value: "```fix\n\n" +(data.battle_royale.next.map)+ "```" , inline: false},
-                {name: "Next Map Starting", value: "```fix\n\n" + timeFormater(data.battle_royale.next.start) + " | " +  timeFormaterAmPm(data.battle_royale.next.start) + "```" , inline: false},
+                {name: "Nex Map Starting", value: "Need to fix this f@cking timing sh@t"}
+                // {name: "Next Map Starting", value: "```fix\n\n" + timeFormater(data.battle_royale.next.start) + " | " +  timeFormaterAmPm(data.battle_royale.next.start) + "```" , inline: false},
             )
 
   

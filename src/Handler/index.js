@@ -47,7 +47,7 @@ module.exports = async (client) => {
         //a single guild
         // await client.guilds.cache.get(process.env.PRIMARY_GUILD_ID).commands.set(arrayOfSlashCommands);
 
-        //all the guilds the bot is in
+        // all the guilds the bot is in
         await client.application.commands.set(arrayOfSlashCommands);
     });
 
