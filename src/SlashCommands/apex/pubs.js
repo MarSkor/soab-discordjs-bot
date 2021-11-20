@@ -24,7 +24,7 @@ module.exports = {
             
             const res = await axios.get(url)
             const data = res.data;
-            console.log(data)
+            // console.log(data)
             
             const embed = new MessageEmbed()
             .setTitle('Battle Royale | Pubs')
@@ -35,11 +35,16 @@ module.exports = {
                 {name: "Next Map", value: "```fix\n\n" +(data.battle_royale.next.map)+ "```" , inline: false},
                 {name: "Next Map Starting", value: "```fix\n\n" + timeFormater(data.battle_royale.next.start) + " | " +  timeFormaterAmPm(data.battle_royale.next.start) + "```" , inline: false},
             )
+
+  
             
             .setImage(data.battle_royale.current.asset)
             .setFooter("May the allfather be with you, and don't mald too much <3")
 
+            // console.log(timeFormater(data.battle_royale.next.start))
+
             interaction.followUp({ embeds: [embed] })
+
         } catch(error){
             console.error(chalk.red(`Error: ${error}`) );
             return await interaction
