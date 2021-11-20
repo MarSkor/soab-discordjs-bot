@@ -1,7 +1,7 @@
 const client = require("../index");
 
 client.on("interactionCreate", async (interaction) => {
-    //handline the slash commands
+    //handling the slash commands
     if (interaction.isCommand()) {
         await interaction.deferReply({ ephemeral: false }).catch(() => {});
 
@@ -20,6 +20,11 @@ client.on("interactionCreate", async (interaction) => {
             } else if (option.value) args.push(option.value);
         }
         interaction.member = interaction.guild.members.cache.get(interaction.user.id);
+
+        if(!interaction.member.permissions.has(cmd.userPermissions || []))
+            return interaction.followUp({
+                content: "You do not have permissions to use this command!",
+            })
 
         cmd.run(client, interaction, args);
     }

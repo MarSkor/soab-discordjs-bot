@@ -1,20 +1,18 @@
+const { SlashCommandBuilder } = require("@discordjs/builders");
 const axios = require('axios');
 const { MessageEmbed } = require("discord.js");
-const { getCountDown } = require("../../Helpers/adapters");
 
 module.exports = {
-    name: 'apexranked',
-    description: 'Info about Apex Legends Ranked',
-    permissions: 'ROLE',
+    ...new SlashCommandBuilder()
+        .setName("apexranked")
+        .setDescription("Info about Apex Legends Ranked"),
+
     
     /**
-     *
-     * @param {Client} client
      * @param {CommandInteraction} interaction
-     * @param {String[]} args
      */
 
-    run: async(client, interaction, args) => {
+    run: async(interaction) => {
         const url = `https://api.mozambiquehe.re/maprotation?version=2&auth=${process.env.APEX_API_KEY}`
         try{
             const res = await axios.get(url)
@@ -24,7 +22,6 @@ module.exports = {
             const embed = new MessageEmbed()
             .setTitle('Battle Royale | Ranked')
             .setColor('BLUE')
-            // .setTimestamp(Date.now() + data.battle_royale.current.remainingSecs*1000,)
             .addFields(
                 {name: "Current Map", value: "```fix\n\n" + data.ranked.current.map + "```", inline: true},
                 {name: "Next map", value: "```fix\n\n" + data.ranked.next.map + "```", inline: true},   
