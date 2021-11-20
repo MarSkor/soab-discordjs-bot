@@ -9,3 +9,7 @@ exports.timeFormater = (time) => {
     return new Date(time * 1000).toLocaleTimeString('en-GB');
 }
 
+exports.timeFormaterAmPm = (time) => {
+  return new Date(time * 1000).toLocaleTimeString();
+}
+
