@@ -1,7 +1,7 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
 const axios = require('axios');
 const { MessageEmbed } = require("discord.js");
-const { getCountDown , timeFormater } = require("../../Helpers/adapters");
+const { getCountDown , timeFormater, timeFormaterAmPm } = require("../../Helpers/adapters");
 const chalk = require('chalk');
 
 
