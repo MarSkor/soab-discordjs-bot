@@ -33,7 +33,7 @@ module.exports = {
                 {name: "Current Map", value: "```fix\n\n" + data.arenas.current.map + "```", inline: true},
                 {name: "Time Left",  value: "```xl\n\n" + getCountDown(data.arenas.current.remainingTimer) + "```", inline: true },
                 {name: "Next Map", value: "```fix\n\n" +(data.arenas.next.map)+ "```" , inline: false},
-                {name: "Next Map Starting (en-GB)", value: "```fix\n\n" + timeFormater(data.arenas.next.start) + " | " +  timeFormaterAmPm(data.arenas.next.start) + "```" , inline: false},   
+                {name: "Next Map Starting", value: "```fix\n\n" + timeFormater(data.arenas.next.start) + " | " +  timeFormaterAmPm(data.arenas.next.start) + "```" , inline: false},   
             )
             .setImage(data.arenas.current.asset)
             .setFooter("May the allfather be with you, and don't mald too much <3")
