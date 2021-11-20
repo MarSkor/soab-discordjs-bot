@@ -10,6 +10,6 @@ exports.timeFormater = (time) => {
 }
 
 exports.timeFormaterAmPm = (time) => {
-  return new Date(time * 1000).toLocaleTimeString('en-US');
+  return new Date(time * 1000).toLocaleTimeString('en-US', {timeZone: "America/New_York"});
 }
 
