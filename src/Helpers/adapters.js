@@ -6,10 +6,10 @@ exports.getCountDown = (timer) => {
   }
 
 exports.timeFormater = (time) => {
-    return new Date(time * 1000).toLocaleTimeString('en-GB');
+    return new Date(time * 1000).toLocaleTimeString([], {hour: '2-digit', minute: '2-digit', second: '2-digit', hour12:false});
 }
 
 exports.timeFormaterAmPm = (time) => {
-  return new Date(time * 1000).toLocaleTimeString();
+  return new Date(time * 1000).toLocaleTimeString('en-US');
 }
 
