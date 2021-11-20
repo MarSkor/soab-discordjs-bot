@@ -43,13 +43,13 @@ module.exports = async (client) => {
         arrayOfSlashCommands.push(file);
     });
     client.on("ready", async () => {
-        // Register for a single guild
-        // await client.guilds.cache
-        //     .get("910275943224991824")
-        //     .commands.set(arrayOfSlashCommands);
+        //a single guild
+        await client.guilds.cache
+            .get("910275943224991824")
+            .commands.set(arrayOfSlashCommands);
 
-        // Register for all the guilds the bot is in
-        await client.application.commands.set(arrayOfSlashCommands);
+        //all the guilds the bot is in
+        // await client.application.commands.set(arrayOfSlashCommands);
     });
 
     // mongoose
@@ -57,3 +57,5 @@ module.exports = async (client) => {
 
     mongoose.connect(process.env.MONGO_URI).then(() => console.log(chalk.blue('Connected to mongodb')));
 };
+
+//from https://github.com/reconlx/djs-base-handler/blob/master/handler/index.js

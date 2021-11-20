@@ -20,7 +20,7 @@ module.exports = client;
 //global variables
 client.commands = new Collection();
 client.slashCommands = new Collection();
-
+client.config = require("../config.json");
 
 //init project
 require("./Handler")(client);
