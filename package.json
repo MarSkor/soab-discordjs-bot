@@ -21,5 +21,10 @@
     "glob": "^7.2.0",
     "mongoose": "^6.0.13",
     "reconlx": "^2.5.1"
+  },
+  "engines": {
+    "node": "16.x",
+    "npm": "7.x"
   }
+
 }
