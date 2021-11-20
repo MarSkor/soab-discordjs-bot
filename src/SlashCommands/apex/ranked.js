@@ -8,11 +8,14 @@ module.exports = {
         .setDescription("Info about Apex Legends Ranked"),
 
     
-    /**
-     * @param {CommandInteraction} interaction
+      /**
+     * 
+     * @param {Client} client 
+     * @param {CommandInteraction} interaction 
+     * @param {String[]} args 
      */
 
-    run: async(interaction) => {
+    run: async(client, interaction, args) => {
         const url = `https://api.mozambiquehe.re/maprotation?version=2&auth=${process.env.APEX_API_KEY}`
         try{
             const res = await axios.get(url)
