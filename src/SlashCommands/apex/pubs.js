@@ -36,7 +36,7 @@ module.exports = {
                 {name: "Nex Map Starting", value: "```fix\n\n" + "Need to fix this f@cking starting time sh@t" + "```"},
                 // {name: "Next Map Starting", value: "```fix\n\n" + timeFormater(data.battle_royale.next.start) + " | " +  timeFormaterAmPm(data.battle_royale.next.start) + "```" , inline: false},
             )
-            .setTimestamp(new Date(data.battle_royale.current.remainingSecs*1000))
+            
   
             
             .setImage(data.battle_royale.current.asset)
