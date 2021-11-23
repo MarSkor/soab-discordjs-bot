@@ -1,15 +1,13 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
-const axios = require('axios');
 const { MessageEmbed } = require("discord.js");
 const chalk = require('chalk');
-
+const { getBrRanked } = require("../../Helpers/getApi");
 
 module.exports = {
     ...new SlashCommandBuilder()
-        .setName("apexranked")
-        .setDescription("Info about Apex Legends Ranked"),
-
-    
+        .setName("alranked")
+        .setDescription("Info about Apex Legends Ranked Games"),
+        
       /**
      * 
      * @param {Client} client 
@@ -18,23 +16,22 @@ module.exports = {
      */
 
     run: async(client, interaction, args) => {
-        const url = `https://api.mozambiquehe.re/maprotation?version=2&auth=${process.env.APEX_API_KEY}`
+
         try{
-            const res = await axios.get(url)
-            const data = res.data;
-            console.log(data.ranked)
+            const data = await getBrRanked();
             
             const embed = new MessageEmbed()
             .setTitle('Battle Royale | Ranked')
             .setColor('BLUE')
             .addFields(
-                {name: "Current Map", value: "```fix\n\n" + data.ranked.current.map + "```", inline: true},
-                {name: "Next map", value: "```fix\n\n" + data.ranked.next.map + "```", inline: true},   
+                {name: "Current Map", value: "```fix\n\n" + data.current.map + "```", inline: true},
+                {name: "Next map", value: "```fix\n\n" + data.next.map + "```", inline: true},   
             )
-            .setImage(data.battle_royale.current.asset)
+            .setImage(data.current.asset)
             .setFooter("May the allfather be with you, and don't mald too much <3")
 
             interaction.followUp({ embeds: [embed] })
+            
         } catch(error){
             console.error(chalk.red(`Error: ${error}`) );
             return await interaction

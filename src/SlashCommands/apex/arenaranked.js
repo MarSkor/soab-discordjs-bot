@@ -1,40 +1,40 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
 const { MessageEmbed } = require("discord.js");
-const { getCountDown , timeFormater, timeFormaterAmPm } = require("../../Helpers/adapters");
 const chalk = require('chalk');
-const { getBrPubs } = require("../../Helpers/getApi");
+const { getArRanked } = require("../../Helpers/getApi");
+const { getCountDown , timeFormater, timeFormaterAmPm } = require("../../Helpers/adapters");
 
 module.exports = {
-    ...new SlashCommandBuilder()
-        .setName("alpubs")
-        .setDescription("Info about Apex Legends Pubs"),
-
-     /**
+   ...new SlashCommandBuilder()
+        .setName("alarenaranked")
+        .setDescription("Info about Apex Legends Arena Ranked Games"),
+    
+    /**
      * 
      * @param {Client} client 
      * @param {CommandInteraction} interaction 
      * @param {String[]} args 
      */
 
-    run: async(client , interaction, args) => {
+    run: async(client, interaction, args) => {
         try{
-            const data = await getBrPubs();
+            const data = await getArRanked();
+            console.log(data)
 
             const embed = new MessageEmbed()
-            .setTitle('Battle Royale | Pubs')
-            .setColor('#d90429')
+            .setTitle('Apex Legends | Arena')
+            .setColor('GREEN')
             .addFields(
                 {name: "Current Map", value: "```fix\n\n" + data.current.map + "```", inline: true},
                 {name: "Time Left",  value: "```xl\n\n" + getCountDown(data.current.remainingTimer) + "```", inline: true },
                 {name: "Next Map", value: "```fix\n\n" +(data.next.map)+ "```" , inline: false},
-                {name: "Next Map Starting", value: "```fix\n\n" + timeFormater(data.next.start) + " | " +  timeFormaterAmPm(data.next.start) + "```" , inline: false},
+                {name: "Next Map Starting", value: "```fix\n\n" + timeFormater(data.next.start) + " | " +  timeFormaterAmPm(data.next.start) + "```" , inline: false},   
             )
-            
             .setImage(data.current.asset)
             .setFooter("May the allfather be with you, and don't mald too much <3")
 
-            interaction.followUp({ embeds: [embed] })
 
+            interaction.followUp({ embeds: [embed] })
         } catch(error){
             console.error(chalk.red(`Error: ${error}`) );
             return await interaction

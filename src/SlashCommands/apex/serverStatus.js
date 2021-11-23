@@ -1,11 +1,12 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
-const axios = require('axios');
 const { MessageEmbed } = require("discord.js");
 const chalk = require('chalk');
+const { getAlStatus } = require("../../Helpers/getApi");
+
 
 module.exports = {
    ...new SlashCommandBuilder()
-   .setName("apexstatus")
+   .setName("alstatus")
    .setDescription("Apex Legends Status"),
 
       /**
@@ -16,13 +17,10 @@ module.exports = {
      */
 
     run: async(client, interaction, args) => {
-        const apiUrl = `https://api.mozambiquehe.re/servers?auth=${process.env.APEX_API_KEY}`
 
         try{
-            const response = await axios.get(apiUrl)
-            const data = response.data;
+            const data = await getAlStatus();
             console.log(data)
-
 
             const embed = new MessageEmbed()
             .setTitle('Apex Legends | Status')

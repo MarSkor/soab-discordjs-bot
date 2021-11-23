@@ -1,15 +1,13 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
-const axios = require('axios');
 const { MessageEmbed } = require("discord.js");
-const { getCountDown , timeFormater, timeFormaterAmPm } = require("../../Helpers/adapters");
 const chalk = require('chalk');
-
+const { getArPubs } = require("../../Helpers/getApi");
+const { getCountDown , timeFormater, timeFormaterAmPm } = require("../../Helpers/adapters");
 
 module.exports = {
    ...new SlashCommandBuilder()
-        .setName("apexarena")
-        .setDescription("Info about Apex Legends Arena"),
-
+        .setName("alarena")
+        .setDescription("Info about Apex Legends Arena Games"),
     
     /**
      * 
@@ -19,24 +17,19 @@ module.exports = {
      */
 
     run: async(client, interaction, args) => {
-        const url = `https://api.mozambiquehe.re/maprotation?version=2&auth=${process.env.APEX_API_KEY}`
         try{
-            
-            const res = await axios.get(url)
-            const data = res.data;
-            console.log(data)
-            
+            const data = await getArPubs();
+
             const embed = new MessageEmbed()
             .setTitle('Apex Legends | Arena')
             .setColor('GREEN')
             .addFields(
-                {name: "Current Map", value: "```fix\n\n" + data.arenas.current.map + "```", inline: true},
-                {name: "Time Left",  value: "```xl\n\n" + getCountDown(data.arenas.current.remainingTimer) + "```", inline: true },
-                {name: "Next Map", value: "```fix\n\n" +(data.arenas.next.map)+ "```" , inline: false},
-                {name: "Nex Map Starting", value: "```fix\n\n" + "Need to fix this f@cking starting time sh@t" + "```"},
-                // {name: "Next Map Starting", value: "```fix\n\n" + timeFormater(data.arenas.next.start) + " | " +  timeFormaterAmPm(data.arenas.next.start) + "```" , inline: false},   
+                {name: "Current Map", value: "```fix\n\n" + data.current.map + "```", inline: true},
+                {name: "Time Left",  value: "```xl\n\n" + getCountDown(data.current.remainingTimer) + "```", inline: true },
+                {name: "Next Map", value: "```fix\n\n" +(data.next.map)+ "```" , inline: false},
+                {name: "Next Map Starting", value: "```fix\n\n" + timeFormater(data.next.start) + " | " +  timeFormaterAmPm(data.next.start) + "```" , inline: false},   
             )
-            .setImage(data.arenas.current.asset)
+            .setImage(data.current.asset)
             .setFooter("May the allfather be with you, and don't mald too much <3")
 
 
