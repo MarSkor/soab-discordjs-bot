@@ -1,5 +1,5 @@
 const { DateTime } = require("luxon");
-const axios = require('axios');
+
 
 //borrowed from https://github.com/vexuas/nessie/blob/develop/commands/maps/battle-royale.js
 exports.getCountDown = (timer) => {
