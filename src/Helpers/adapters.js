@@ -13,7 +13,7 @@ exports.timeFormater = (time) => {
 }
 
 exports.timeFormaterAmPm = (time) => {
-  return new Date(time * 1000).toLocaleTimeString('en-US', {timeZone: "America/New_York", hour: '2-digit', minute: '2-digit', hour12: true });
+  return new Date(time * 1000).toLocaleTimeString('en-US', {timeZone: "America/New_York", hour12: true });
 }
 
 // exports.luxonTime = (time) => {
