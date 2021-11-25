@@ -1,7 +1,7 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
 const { MessageEmbed } = require("discord.js");
 const chalk = require('chalk');
-const { getBrRanked } = require("../../Helpers/getApi");
+const { getBrRanked, getNextSplit } = require("../../Helpers/getApi");
 
 module.exports = {
     ...new SlashCommandBuilder()
@@ -19,6 +19,7 @@ module.exports = {
 
         try{
             const data = await getBrRanked();
+            const nextsplit = await getNextSplit();
             
             const embed = new MessageEmbed()
             .setTitle('Battle Royale | Ranked')
@@ -27,6 +28,7 @@ module.exports = {
                 {name: "Current Map", value: "```fix\n\n" + data.current.map + "```", inline: true},
                 {name: "Next map", value: "```fix\n\n" + data.next.map + "```", inline: true},   
             )
+            .addField("Split Ending", `<t:${nextsplit.end}:R>`)
             .setImage(data.current.asset)
             .setFooter("May the allfather be with you, and don't mald too much <3")
 

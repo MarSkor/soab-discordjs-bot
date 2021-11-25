@@ -2,7 +2,7 @@ const { SlashCommandBuilder } = require("@discordjs/builders");
 const { MessageEmbed } = require("discord.js");
 const chalk = require('chalk');
 const { getArRanked } = require("../../Helpers/getApi");
-const { getCountDown , timeFormater, timeFormaterAmPm } = require("../../Helpers/adapters");
+const { getCountDown , timeFormatTwentyFourPlusTwo, timeFormatTwentyFour, timeFormatLuxonAmPm} = require("../../Helpers/adapters");
 
 module.exports = {
    ...new SlashCommandBuilder()
@@ -28,8 +28,7 @@ module.exports = {
                 {name: "Current Map", value: "```fix\n\n" + data.current.map + "```", inline: true},
                 {name: "Time Left",  value: "```xl\n\n" + getCountDown(data.current.remainingTimer) + "```", inline: true },
                 {name: "Next Map", value: "```fix\n\n" +(data.next.map)+ "```" , inline: false},
-                {name: "Next Map Starting", value: "making me mald"},
-                // {name: "Next Map Starting", value: "```fix\n\n" + timeFormater(data.next.start) + " | " +  timeFormaterAmPm(data.next.start) + "```" , inline: false},   
+                {name: "Next Map Starting", value: "```fix\n\n" + timeFormatTwentyFour(data.next.start) + " | " +  timeFormatLuxonAmPm(data.next.start) + " | " +  timeFormatTwentyFourPlusTwo(data.next.start) + "```" , inline: false},    
             )
             .setImage(data.current.asset)
             .setFooter("May the allfather be with you, and don't mald too much <3")

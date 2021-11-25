@@ -1,4 +1,4 @@
-const { DateTime } = require("luxon");
+const { DateTime, Settings } = require("luxon");
 
 
 //borrowed from https://github.com/vexuas/nessie/blob/develop/commands/maps/battle-royale.js
@@ -8,16 +8,21 @@ exports.getCountDown = (timer) => {
     return `${isOverAnHour ? `${countdown[0]} hr ` : ''}${countdown[1]} mins ${countdown[2]} secs`;
   }
 
-exports.timeFormater = (time) => {
-    return new Date(time * 1000).toLocaleTimeString([], {hour: '2-digit', minute: '2-digit', hour12:false});
+
+
+//https://moment.github.io/luxon/index.html#/
+exports.timeFormatTwentyFour = (time) => {
+  return DateTime.fromSeconds(time, {zone: "utc+1"}).toLocaleString(DateTime.TIME_24_WITH_SHORT_OFFSET)
 }
 
-exports.timeFormaterAmPm = (time) => {
-  return new Date(time * 1000).toLocaleTimeString('en-US', {timeZone: "America/New_York", hour12: true });
+exports.timeFormatTwentyFourPlusTwo = (time) => {
+  return DateTime.fromSeconds(time, {zone: "utc+2"}).toLocaleString(DateTime.TIME_24_WITH_SHORT_OFFSET)
 }
 
-// exports.luxonTime = (time) => {
-//   const specificDateTime = DateTime.fromSeconds(time).toISO();
-//   return DateTime.local(specificDateTime, { zone: "America/New_York"}) //?????
-// }
+
+exports.timeFormatLuxonAmPm = (time) => {
+  return DateTime.fromSeconds(time, {zone: "America/New_York"}).toLocaleString(DateTime.TIME_WITH_SHORT_OFFSET)
+}
+
+
 
