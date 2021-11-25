@@ -22,7 +22,7 @@ module.exports = {
             console.log(data)
 
             const embed = new MessageEmbed()
-            .setTitle('Apex Legends | Arena')
+            .setTitle('Apex Legends | Arena Ranked')
             .setColor('GREEN')
             .addFields(
                 {name: "Current Map", value: "```fix\n\n" + data.current.map + "```", inline: true},
